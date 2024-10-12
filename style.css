@@ -146,6 +146,86 @@ color: #fff;}
 .menu-bar,.magnifying-glass{
     display: none;
 }
+
+
+
+
+/* nav bar 3 */
+
+.navbar-3rd {
+    display: flex;
+    align-items: center;
+    background-color: #0b5394;
+    padding: 10px 15px;
+    /* overflow-x: auto; */
+ justify-content: center;
+}
+
+.navbar-3rd a, .navbar-3rd .dropdown-3rd{
+    padding: 3px 6px;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.navbar-3rd a:hover, .navbar-3rd .dropdown-.dropdown-3rd {
+    background-color: #1c7ed6;
+}
+
+.navbar-3rd .home {
+    padding-left: 0;
+}
+
+.navbar-3rd .compare {
+    background-color: #ff6b6b;
+    color: white;
+}
+
+.navbar-3rd .coupons {
+    background-color: #d4ed02;
+    color: black;
+}
+
+.navbar-3rd .best-offers {
+    background-color: #ffcb00;
+    color: black;
+}
+
+/* Dropdown Arrow */
+.dropdown-3rd::after {
+    content: "\25BC";
+    font-size: 10px;
+    color: white;
+}
+
+/* Hide Scroll Bar */
+.navbar-3rd::-webkit-scrollbar {
+    display: none;
+}
+
+.navbar-3rd {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* 
 #compareChashback{
 display: flex;
@@ -1454,13 +1534,134 @@ footer{
     display: none;
 }
 
+/* banner slide */
+/* 
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .carousel {
+            position: relative;
+            max-width: 1000px;
+            margin: auto;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .carousel-item {
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+        .carousel-item img {
+            width: 100%;
+            vertical-align: middle;
+            border-radius: 10px;
+        }
+        .carousel-item .text {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+            z-index: 10;
+        }
+        .prev:hover, .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .prev {
+            left: 10px;
+        }
+        .next {
+            right: 10px;
+        }
+
+
+ */
 
 
 
+.carousel {
+    position: relative;
+    max-width: 1240px;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.carousel-inner {
+    display: flex;
+    gap: 1px;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item {
+    min-width: 33.33%; /* Show 3 items at once */
+    box-sizing: border-box;
+    /* padding: 10px; */
+}
+
+.carousel-item img {
+    width: 100%;
+    vertical-align: middle;
+    border-radius: 10px;
+}
+
+.carousel-item .text {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: orange;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    z-index: 10;
+}
+
+.prev{
+    left: 0;
+}
+
+
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
 
 
 
-
+.next {
+    right:0;
+}
 
 
 
@@ -1659,6 +1860,14 @@ footer{
     .search-bar {
         border-radius:0; 
     }
+    /* .navbar-3rd{
+        overflow-x: hidden;
+    }
+    .compare-3rd,.refrigerators-3rd,.camera-3rd,
+    .insurance-3rd,.electric-3rd,.compare-3rd,.coupons-3rd,.best-offers-3rd{
+        display: none;
+        background-color: rebeccapurple;
+    } */
 
 }
 
@@ -1721,10 +1930,12 @@ footer{
         grid-template-columns: 1fr 1fr;
     }
 
+    .carousel-item {
+        min-width: 100%; /* Show 1 item at a time on mobile */
+    }
+
 
 }
-
-
 
 
 

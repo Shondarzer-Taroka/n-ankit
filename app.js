@@ -124,3 +124,40 @@ function prevCard() {
 
 
 
+
+
+
+
+
+
+
+
+
+let currentInd = 0;
+
+function moveSlide(direction) {
+    const carouselInner = document.querySelector('.carousel-inner');
+    const items = document.querySelectorAll('.carousel-item');
+    const totalItems = items.length;
+
+    // Check the screen size to determine how many items should be visible
+    const totalVisible = window.innerWidth <= 768 ? 1 : 3; // 1 card for mobile, 3 cards for desktop
+
+    currentInd += direction;
+
+    // Check bounds to prevent out-of-range sliding
+    if (currentInd < 0) {
+        currentInd = totalItems - totalVisible;
+    } else if (currentInd > totalItems - totalVisible) {
+        currentInd = 0;
+    }
+
+    const offset = -currentInd * (100 / totalVisible); // Adjust offset for visible items
+    carouselInner.style.transform = `translateX(${offset}%)`;
+}
+
+// Optional: Recalculate and reset position when window is resized
+window.addEventListener('resize', () => {
+    currentInd = 0;
+    moveSlide(0); // Recalculate carousel on resize
+});
