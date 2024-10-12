@@ -5,8 +5,9 @@
 }
 
 body {
-    max-width: 1140px;
+      max-width: 1240px;
     margin: 0 auto;
+
 }
 
 #headerFirst {
@@ -14,9 +15,12 @@ body {
     display: flex;
     gap: 5px;
     align-items: center;
-    width: max-content;
     padding: 2px 13px;
 }
+
+.nav-social-icons a{
+color: #fff;}
+
 
 .btnHeader {
     border: none;
@@ -27,11 +31,20 @@ body {
     margin-right: 10px;
 }
 
-.btnHeader {
-    border: none;
-    cursor: pointer;
+
+
+.nav-bar-buttons{
+    display: flex;
 }
 
+.nav-bar-buttons button{
+    padding: 4px;
+    border-left: 1px solid white;
+}
+
+.btnHeaderLast{
+    border: none;
+}
 /* 
 #compareChashback{
 display: flex;
@@ -682,7 +695,7 @@ h2 {
     background-color: white;
     border-radius: 10px;
     border: 1px solid #ccc;
-    width: 400px;
+    /* width: 400px; */
 
     text-align: center;
 }
@@ -1316,6 +1329,51 @@ footer{
 }
 
 
+
+/* bottom nav bar */
+
+
+.nav-bottom i{
+    /* border: 1px solid #000; */
+    padding: 12px;
+    border-radius: 50%;
+    transition: all .2s;
+}
+
+.nav-bottom span:hover i{
+    /* position: absolute; */
+    background-color: orange;
+    color: white;
+    margin-top: -23px;
+    
+}
+
+
+.bottom-nav-bar{
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media(max-width:555px) {
     .news-header a {
         display: none;
@@ -1460,6 +1518,14 @@ footer{
         margin: 10px 0;
         padding-left: 10px;
         gap: 15px;
+    }
+
+    .bottom-nav-bar{
+        display: block;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    
     }
 
 }

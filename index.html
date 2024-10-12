@@ -17,17 +17,18 @@
 <body>
 
     <header>
-        <aside id="headerFirst">
-            <div id="headerSocialIcons" style="border-right: 1px solid white; padding: 0 12px;">
-                <i class="fab fa-facebook"></i>
-                <i class="fab fa-twitter"></i>
-                <i class="fab fa-linkedin-in"></i>
-                <i class="fab fa-google-plus-g"></i>
-                <i class="fab fa-pinterest-square"></i>
-                <i class="fab fa-instagram"></i>
+        <nav id="headerFirst">
+            <div class="nav-social-icons" id="headerSocialIcons" style="border-right: 1px solid white;">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-google-plus-g"></i></a>
+                <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fas fa-rss"></i></a>
             </div>
 
-            <div style="color: white; border-right: 1px solid white; padding: 0 12px;">
+            <div style="color: white;padding: 0 12px;">
                 <p class="" style="display: flex; align-items: center; gap: 5px;">Join Whatsapp & Telegram Channel for
                     Cashback & PriceDrop Alerts
                     <img src="/assets/icons/WhatsApp.png" alt=""> <img src="/assets//icons//Telegram.png" alt="">
@@ -36,18 +37,18 @@
 
 
 
-            <div style="display: flex; gap: 12px;">
-                <button class="btnHeader" style="outline: none; background: transparent; color: white;">Refer &
+            <div  class="nav-bar-buttons">
+                <button class="btnHeader" style="padding: 2; outline: none; border-right: 1px solid white; background: transparent; color: white;">Refer &
                     Earn</button>
-                <button class="btnHeader" style="outline: none; background: transparent; color: orange;">Log in</button>
+                <button class="btnHeader" style="outline: none; background: transparent; color: orange;"> <i class="fas fa-key"></i> Log in</button>
                 <button class="btnHeader"
-                    style="outline: none; background: transparent; color: orange;">Register</button>
+                    style="outline: none; background: transparent; color: orange;"><i class="fas fa-user"></i>Register</button>
                 <button class="btnHeader" style="outline: none; background: transparent; color: white;">Become a
                     partner</button>
-                <button class="btnHeader" style="outline: none; background: transparent; color: white;">Delivery
+                <button class="btnHeader btnHeaderLast" style="outline: none; background: transparent; color: white;">Delivery
                     Inquery</button>
             </div>
-        </aside>
+        </nav>
 
 
 
@@ -391,7 +392,7 @@
 
         <h2>Compare Price and Features </h2>
         <div class="carousel-container">
-            <button class="prev" onclick="prevCard()">&#10094;</button>
+          
             <aside class="Compare-price-and-feature-card-container">
 
                 <div id="compare-card">
@@ -562,7 +563,7 @@
 
 
             </aside>
-            <button class="next" onclick="nextCard()">&#10095;</button>
+           
         </div>
 
 
@@ -1017,6 +1018,53 @@
         </aside>
       
     </footer>
+
+    <!-- bottom nav bar -->
+
+    <section style="background-color: rgb(11, 49, 126);" class="bottom-nav-bar">
+      
+    <div
+    style="height:100px; background-color: rgba(255, 255, 255, 0.92); display: flex; flex-direction: column; justify-content: end;"
+    >
+
+
+    
+        <aside style="width:100%; background: white; height:70px; padding-right: 29px;">
+            <div class="nav-bottom" style="display: flex; justify-content: space-between; margin-left: 12px; position: relative;">
+                <span style="display: flex; justify-content: center; flex-direction: column; height:100%;">
+                    <i style="font-size: 24px;" class="fas fa-home"></i>
+                    
+                        Home
+                  
+                   
+                </span>
+               
+                <span style="display: flex; justify-content: center; flex-direction: column; height:100%;">
+                    <i style="font-size: 24px;" class="fas fa-search"></i>
+                    Search
+                </span>
+             
+                <span class="heart" style="display: flex; justify-content: center; flex-direction: column;height: 100%;">
+                    <i style="font-size: 24px;" class="far fa-heart"></i>
+                    Heart
+                </span>
+
+                <span style="display: flex; justify-content: center; flex-direction: column; height: 100%;" >
+                    <i style="font-size: 24px; " class="fas fa-history"></i>
+                    History
+                </span>
+             
+                <span style="display: flex; justify-content: center; flex-direction: column; height: 100%;" >
+
+                    <i style="font-size: 24px;" class="far fa-user"></i>
+                    Profile
+                </span>
+           
+            </div>
+        </aside>
+    </div>
+  
+    </section>
 
     <script src="app.js"></script>
 </body>
