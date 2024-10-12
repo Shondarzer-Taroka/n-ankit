@@ -618,6 +618,42 @@ h2 {
 
 
 
+/* Trending products */
+
+.button-container {
+    display: grid;
+    gap: 10px;
+}
+
+/* Default to 2 columns */
+@media (min-width: 0) {
+    .button-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* 4 columns for laptops */
+@media (min-width: 1024px) {
+    .button-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.price-button {
+    padding: 17px 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: white;
+    color: black;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.price-button:hover{
+    background-color: orange;
+    color: white;
+}
 
 
 
