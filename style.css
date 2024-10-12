@@ -31,6 +31,7 @@ body {
     border: none;
     cursor: pointer;
 }
+
 /* 
 #compareChashback{
 display: flex;
@@ -518,17 +519,20 @@ h2 {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
 .nav-item {
     text-align: center;
     color: #000;
     width: 60px;
-   
+
 }
+
 .nav-item img {
-   
+
     width: 100%;
-    
+
 }
+
 .nav-item p {
     margin: 10px 0 0;
     font-size: 14px;
@@ -536,7 +540,7 @@ h2 {
 
 
 
-#popularComparisons{
+#popularComparisons {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
@@ -605,13 +609,15 @@ h2 {
 
 #mobileCardContainer {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Shows 4 cards at a time */
+    grid-template-columns: repeat(4, 1fr);
+    /* Shows 4 cards at a time */
     gap: 12px;
     overflow: hidden;
     width: 100%;
 }
 
-#next-arrow, #prev-arrow {
+#next-arrow,
+#prev-arrow {
     cursor: pointer;
     z-index: 1;
 }
@@ -650,8 +656,117 @@ h2 {
     transition: background-color 0.3s, color 0.3s;
 }
 
-.price-button:hover{
+.price-button:hover {
     background-color: orange;
+    color: white;
+}
+
+
+/* Compare price and feature */
+
+.Compare-price-and-feature-card-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* 4 columns by default */
+    /* overflow: hidden; */
+    gap: 20px;
+}
+
+
+#compare-card {
+    width: 100%;
+}
+
+
+.Compare-price-and-feature {
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    width: 400px;
+
+    text-align: center;
+}
+
+.phone-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.phone {
+
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.phone img {
+    width: 100px;
+    height: auto;
+}
+
+.phone-details {
+    text-align: left;
+}
+
+.vs {
+    font-size: 24px;
+    font-weight: bold;
+    border: 1px solid #ccc;
+    padding: 4px 6px;
+    border-radius: 50%;
+}
+
+.compare-button {
+
+    font-weight: 700;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    margin-top: 8px;
+    transition: all .5s;
+}
+
+.compare-button:hover {
+    background-color: #ff9b00;
+    color: #fff;
+}
+
+
+/* Style for the carousel arrows */
+.carousel-container {
+    position: relative;
+}
+
+.prev,
+.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #ccc;
+    border: none;
+    font-size: 18px;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+.prev:hover,
+.next:hover {
+    background-color: #ff9b00;
     color: white;
 }
 
@@ -661,8 +776,693 @@ h2 {
 
 
 
+/* Container */
+#search-kariel-container {
+    display: flex;
+    gap: 6px;
+}
+
+.search-kariel-card {
+
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Banner Section */
+.banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f0f4f7;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.logo img {
+    /* height: 50px; */
+}
+
+.whatsapp-join {
+    text-align: center;
+}
+
+.whatsapp-join p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.join-btn {
+    background-color: #32c13a;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.tech-info {
+    text-align: right;
+}
+
+.tech-info p {
+    font-size: 16px;
+}
+
+.tech-info .icon img {
+    height: 40px;
+    margin-top: 10px;
+}
+
+/* Latest News Section */
+.latest-news {
+    background-color: white;
+    padding: 30px 20px;
+    border-radius: 10px;
+    border: 1px solid #555;
+    /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); */
+}
+
+.news-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.news-header h2 {
+    font-size: 24px;
+    margin: 10px 0;
+}
+
+.see-all {
+    color: #0073e6;
+    text-decoration: none;
+}
+
+.news-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* News Card */
+.news-card {
+    display: flex;
+    align-items: flex-start;
+}
+
+.news-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-right: 15px;
+}
+
+.news-content h3 {
+    font-size: 18px;
+    margin: 0 0 10px 0;
+}
+
+.news-content p {
+    font-size: 14px;
+    color: #555;
+    margin: 0;
+}
+
+.see-all-latest-news-parent {
+    display: none;
+}
+
+.see-all-latest-news {
+    display: none;
+}
+
+/* Top stories */
 
 
+
+.top-stories {
+    /* width: 80%; */
+    /* max-width: 1200px; */
+    background-color: #778899;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+}
+
+.top-stories h2 {
+    color: white;
+    text-align: center;
+
+}
+
+.stories-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.story {
+    text-align: center;
+    width: 240px;
+    position: relative;
+}
+
+.story img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.story p {
+    position: absolute;
+    background-color: #e4e2e0;
+    bottom: 0%;
+    font-size: 18px;
+
+}
+
+
+/*Best Appliances Price List*/
+
+/* Container */
+.appliance-list-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Title */
+.appliance-list-container h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Appliance list columns */
+.appliance-columns {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* Creates three equal columns */
+    gap: 20px;
+}
+
+/* Appliance list styling */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    margin-bottom: 10px;
+}
+
+ul li a {
+    text-decoration: none;
+    font-size: 16px;
+    color: #333;
+}
+
+ul li a:hover {
+    color: #0073e6;
+}
+
+ul li a::before {
+    content: '›';
+    /* Adding arrow bullet before each link */
+    margin-right: 10px;
+    color: #0073e6;
+}
+
+/*  */
+
+
+
+
+.Smartphone-Features-Container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+}
+
+.card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+}
+
+.card h3 {
+    margin: 10px 0 5px;
+    font-size: 18px;
+}
+
+.card p {
+    margin: 0 0 10px;
+    color: #555;
+}
+
+/* cashback card offer */
+.cashback-card {
+    /* width: 170px; */
+    border: 1px solid #EDEFF2;
+
+}
+
+.cashback-card img {
+    width: 120px;
+    padding: 4px 12px;
+
+}
+
+.cashback-card p {
+    padding: 4px 12px;
+    border: 1px solid #EDEFF2;
+}
+
+.cashback-card-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+}
+
+
+/* footer */
+
+
+footer{
+    overflow: hidden;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    background-color: #002b5c;
+   
+    color: white;
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+
+    flex: 1;
+    margin: 0 10px;
+}
+
+.footer-logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 90%;
+}
+
+.footer-column h3 {
+    padding-bottom: 10px;
+}
+
+.footer-column ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin: 10px 0;
+}
+
+.footer-column ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer-column ul li a:hover {
+    text-decoration: underline;
+}
+
+.social-icons {
+    display: flex;
+    gap: 10px;
+}
+
+.social-icons a {
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.logo {
+    width: 150px;
+}
+
+
+/* footer last part */
+
+.footer-last {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #002b5c;
+    padding: 10px;
+    border: 1px dashed white;
+
+}
+
+.icons-carousel {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 10px 0;
+}
+
+.icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid white;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Use your own image URLs here */
+.icon:nth-child(1) {
+    background-image: url('https://via.placeholder.com/50');
+}
+
+.icon:nth-child(2) {
+    background-image: url('https://via.placeholder.com/50/FF0000');
+}
+
+.icon:nth-child(3) {
+    background-image: url('https://via.placeholder.com/50/0000FF');
+}
+
+.icon:nth-child(4) {
+    background-image: url('https://via.placeholder.com/50/00FF00');
+}
+
+.icon:nth-child(5) {
+    background-image: url('https://via.placeholder.com/50/FFA500');
+}
+
+.icon:nth-child(6) {
+    background-image: url('https://via.placeholder.com/50/FFFF00');
+}
+
+.icon:nth-child(7) {
+    background-image: url('https://via.placeholder.com/50/FF00FF');
+}
+
+.subscribe-section {
+    display: flex;
+    align-items: center;
+    gap: 0;
+}
+
+.subscribe-section input[type="text"] {
+    padding: 10px;
+    border: none;
+    background-color: white;
+    outline: none;
+    height: 38.67px;
+
+}
+
+/* .subscribe-section button {
+    padding: 10px 20px;
+    background-color: #f39c12;
+    color: white;
+    border: none;
+    
+    cursor: pointer;
+} */
+
+.subscribe-section .submit-btn {
+    background-color: #f1c40f;
+    border-radius: none;
+    height: 38.67px;
+    background-color: #f39c12;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-end-end-radius: 4px;
+    border-start-end-radius: 4px;
+}
+
+.saved-item {
+    font-size: 16px;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.dropdown {
+    padding: 10px 20px;
+    background-color: #f39c12;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    height: 38.67px;
+}
+
+.compareButton,
+.hide {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    outline: none;
+    border: none;
+    color: white;
+    background: transparent;
+}
+
+.hide {
+    display: flex;
+    align-items: center;
+}
+
+.hide .fa-angle-left {
+    background-color: orange;
+    height: 19px;
+    width: 19px;
+    padding: 4px;
+    border-radius: 50%;
+
+}
+
+.subscribe-container{
+    display: none;
+}
+
+.aside{
+    background-color: #003366;
+}
+
+
+
+.last-social-icons {
+    display: none;
+    gap: 15px;
+}
+
+.last-social-icons a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    border-radius: 50%;
+    text-decoration: none;
+    color: #003366;
+    font-size: 24px;
+}
+
+.hr{
+    width: 100%;
+    height: 1px;
+    background-color: gray;
+   /* margin: 0 20px; */
+  
+}
+
+.aside .hr
+{
+    width: 71%;
+    height: 1px;
+    background-color: gray;  
+    margin: 0 20px;
+}
+
+
+@media(max-width:555px) {
+    .news-header a {
+        display: none;
+    }
+
+    .see-all-latest-news {
+        display: block;
+        background-color: orange;
+        padding: 8px 12px;
+        color: white;
+        border-radius: 4px;
+        font-weight: 400;
+        outline: none;
+        border: 0;
+    }
+
+    .see-all-latest-news-parent {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+
+    .latest-news {
+
+        border: none;
+
+    }
+
+    .top-stories h2 {
+        text-align: left;
+        color: black;
+    }
+
+    .top-stories {
+
+        background-color: #fff;
+        box-shadow: none;
+        border-radius: 0;
+        padding: 0;
+        overflow: hidden;
+
+    }
+
+
+    .banner {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+
+
+    .stories-grid {
+
+        display: inline-flex;
+
+        margin-top: 20px;
+    }
+
+    .story {
+        width: 230px;
+        position: relative;
+
+    }
+
+    .story p {
+        width: 100%;
+        height: 49px;
+        font-size: 14px;
+    }
+
+    .appliance-columns {
+        grid-template-columns: 1fr;
+    }
+
+    .Smartphone-Features-Parent {
+        overflow: hidden;
+    }
+
+    .Smartphone-Features-Container {
+        display: inline-flex;
+    }
+
+    .card {
+        width: 180px;
+    }
+
+    .see-all-offer {
+        display: none;
+    }
+
+    .footer {
+        display: grid;
+        padding: 20px;
+        gap: 12px;
+        color: white;
+        justify-content: start; 
+    }
+
+    .footer-last{
+        border: 0;
+        margin-bottom: 20px;
+        margin-left: 15px;
+    }
+
+    .footer-column ul {
+        list-style-type: none;
+        padding: 0;
+        display: none;
+    }
+    .footer-column{
+        width: 300px;
+    }
+
+    .footer-column h3{
+        width: 100%;
+        /* background-color: rebeccapurple; */
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .social-icons {
+        display: none;
+    }
+
+    .footer-logo p {
+        display: none;
+    }
+    .hide,.compareButton,.icons-carousel,.saved-item,.dropdown{
+        display: none;
+    }
+    .subscribe-section input[type="text"]{
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+    }
+
+    .subscribe-container{
+        display: block;
+    }
+    .last-social-icons {
+        display: flex;
+        margin: 10px 0;
+        padding-left: 10px;
+        gap: 15px;
+    }
+
+}
 
 
 
@@ -700,14 +1500,35 @@ h2 {
     .feature-buttons {
         flex-direction: column;
     }
-    #popularComparisons{
+
+    #popularComparisons {
         justify-content: center;
-       
+
     }
-    .ContainermobileCard{
-        grid-template-columns: repeat(1,1fr);
+
+    .ContainermobileCard {
+        grid-template-columns: repeat(1, 1fr);
     }
+
+    .Compare-price-and-feature-card-container {
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 columns on smaller screens */
+    }
+
+    #search-kariel-container {
+        flex-direction: column;
+    }
+
+    .cashback-card-container {
+        grid-template-columns: 1fr 1fr;
+    }
+
+
 }
+
+
+
+
 
 
 
@@ -715,23 +1536,34 @@ h2 {
 /* Tablet view (2 cards) */
 @media (max-width: 1024px) {
     #mobileCardContainer {
-        grid-template-columns: repeat(2, 1fr); /* Show 2 cards at a time */
+        grid-template-columns: repeat(2, 1fr);
+        /* Show 2 cards at a time */
     }
-    #next-arrow, #prev-arrow {
+
+    #next-arrow,
+    #prev-arrow {
         width: 25px;
         height: 35px;
+    }
+
+    .compare-price-and-feature-card-container {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
 /* Mobile view (1 card) */
 @media (max-width: 600px) {
     #mobileCardContainer {
-        grid-template-columns: 1fr; /* Show 1 card at a time */
+        grid-template-columns: 1fr;
+        /* Show 1 card at a time */
     }
-    #next-arrow, #prev-arrow {
+
+    #next-arrow,
+    #prev-arrow {
         width: 20px;
         height: 30px;
     }
+
     #mobileCard h1 {
         font-size: 16px;
     }

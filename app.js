@@ -87,3 +87,40 @@ prevArrow.addEventListener('click', () => {
         updateVisibleCards();
     }
 });
+
+
+// compare price and 
+const container = document.querySelector('.Compare-price-and-feature-card-container');
+let scrollPosition = 0;
+const cardWidth = 400; // Approximate width of one card (you can adjust as per actual size)
+
+/* Function to scroll to the next set of cards */
+function nextCard() {
+    const containerWidth = container.offsetWidth;
+    scrollPosition += cardWidth * 2; // Scroll by the width of two cards (for mobile view)
+    
+    // If the scroll position exceeds the container width, reset it
+    if (scrollPosition >= container.scrollWidth - containerWidth) {
+        scrollPosition = 0;
+    }
+    container.scrollTo({
+        left: scrollPosition,
+        behavior: 'smooth'
+    });
+}
+
+/* Function to scroll to the previous set of cards */
+function prevCard() {
+    scrollPosition -= cardWidth * 2; // Scroll back by the width of two cards
+
+    if (scrollPosition < 0) {
+        scrollPosition = 0;
+    }
+    container.scrollTo({
+        left: scrollPosition,
+        behavior: 'smooth'
+    });
+}
+
+
+
