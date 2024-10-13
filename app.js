@@ -1,3 +1,105 @@
+
+
+// range
+
+const rangeContainer = document.getElementById('rangeContainer');
+const minHandle = document.getElementById('minHandle');
+const maxHandle = document.getElementById('maxHandle');
+const rangeFill = document.getElementById('rangeFill');
+const containerWidth = rangeContainer.offsetWidth;
+const minValueText = document.getElementById('minValueText');
+const maxValueText = document.getElementById('maxValueText');
+
+const minValueRange = 1000;
+const maxValueRange = 15000;
+
+// Update the range fill between the two handles
+const updateRangeFill = () => {
+    rangeFill.style.left = minHandle.offsetLeft + 'px';
+    rangeFill.style.width = (maxHandle.offsetLeft - minHandle.offsetLeft) + 'px';
+
+    const minValue = Math.floor(minHandle.offsetLeft / containerWidth * (maxValueRange - minValueRange) + minValueRange);
+    const maxValue = Math.floor(maxHandle.offsetLeft / containerWidth * (maxValueRange - minValueRange) + minValueRange);
+
+    minValueText.textContent = minValue.toLocaleString();
+    maxValueText.textContent = maxValue.toLocaleString();
+};
+
+// Dragging the min handle
+const dragMinHandle = (e) => {
+    let newLeft = e.clientX - rangeContainer.offsetLeft;
+
+    if (newLeft < 0) newLeft = 0;
+    if (newLeft > maxHandle.offsetLeft - minHandle.offsetWidth) {
+        newLeft = maxHandle.offsetLeft - minHandle.offsetWidth;
+    }
+
+    minHandle.style.left = newLeft + 'px';
+    updateRangeFill();
+};
+
+// Dragging the max handle
+const dragMaxHandle = (e) => {
+    let newLeft = e.clientX - rangeContainer.offsetLeft;
+
+    if (newLeft > containerWidth - maxHandle.offsetWidth) {
+        newLeft = containerWidth - maxHandle.offsetWidth;
+    }
+    if (newLeft < minHandle.offsetLeft + minHandle.offsetWidth) {
+        newLeft = minHandle.offsetLeft + minHandle.offsetWidth;
+    }
+
+    maxHandle.style.left = newLeft + 'px';
+    updateRangeFill();
+};
+
+// Mouse down events to begin dragging
+minHandle.addEventListener('mousedown', () => {
+    document.addEventListener('mousemove', dragMinHandle);
+});
+
+maxHandle.addEventListener('mousedown', () => {
+    document.addEventListener('mousemove', dragMaxHandle);
+});
+
+// Mouse up event to stop dragging
+document.addEventListener('mouseup', () => {
+    document.removeEventListener('mousemove', dragMinHandle);
+    document.removeEventListener('mousemove', dragMaxHandle);
+});
+
+// Handle clicks on the range bar
+const handleRangeClick = (e) => {
+    const clickPosition = e.clientX - rangeContainer.offsetLeft;
+    const minDistance = Math.abs(clickPosition - minHandle.offsetLeft);
+    const maxDistance = Math.abs(clickPosition - maxHandle.offsetLeft);
+
+    if (minDistance < maxDistance) {
+        minHandle.style.left = clickPosition + 'px';
+    } else {
+        maxHandle.style.left = clickPosition + 'px';
+    }
+
+    updateRangeFill();
+};
+
+rangeContainer.addEventListener('click', handleRangeClick);
+
+// Initial range fill setup
+updateRangeFill();
+
+
+
+
+
+
+
+
+
+
+
+
+
 const items = document.querySelectorAll('.comparison-item');
 
 // Function to clear active states and set the clicked one as active
