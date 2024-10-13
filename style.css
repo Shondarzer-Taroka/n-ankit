@@ -876,18 +876,19 @@ h2 {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #f0f4f7;
+    background-color: #e6fcda;
     padding: 20px;
     border-radius: 10px;
     margin-bottom: 20px;
 }
 
-.logo img {
-    /* height: 50px; */
-}
+
 
 .whatsapp-join {
     text-align: center;
+    padding-left: 12px;
+    padding-right: 12px;
+    border-right: 1px solid #a9a8a8;
 }
 
 .whatsapp-join p {
@@ -1555,6 +1556,41 @@ footer {
 
 
 
+
+
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    /* background-color: #003366;  */
+    background-color: transparent;
+    color: white; 
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.button .icon {
+    background-color: #FFCC00; 
+    color: white; 
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+}
+
+.button .icon::before {
+    content: "\f053";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 16px;
+}
 
 
 
