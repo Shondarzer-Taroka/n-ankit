@@ -1734,6 +1734,7 @@ footer {
     .compareButton,
     .icons-carousel,
     .saved-item,
+    .button,
     .dropdown {
         display: none;
     }
