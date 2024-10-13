@@ -51,6 +51,63 @@ body {
 
 
 
+/* store */
+
+
+.cashback-stores {
+    display: flex;
+    align-items: center;
+ 
+    padding: 10px 20px;
+    max-width: 100%;
+    justify-content: space-between;
+    border-radius: 5px;
+    box-shadow: 0px 4px 2px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 20px;
+    background-color: #f1a800; /* Set your background color */
+    padding: 10px 15px;
+}
+
+.store-logos {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    justify-content: center;
+    gap: 20px; /* Space between logos */
+}
+
+.store-logos img {
+    height: 40px;
+    filter: grayscale(100%); /* Optional: make logos grayscale */
+    transition: filter 0.3s;
+}
+
+.store-logos img:hover {
+    filter: grayscale(0%); /* Highlight logos on hover */
+}
+
+.more-button button {
+    background-color: #f1a800;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.more-button button:hover {
+    background-color: #e09400;
+}
+
 /* 2nd nav bar */
 
 
@@ -282,6 +339,8 @@ body {
 #compareChashback {
     display: flex;
     justify-content: space-between;
+    background-color: #002b5c;
+    padding: 10px 13px;
     gap: 12px;
 }
 
@@ -481,7 +540,7 @@ h2 {
     background-color: #28a745;
     color: white;
     border: none;
-    padding: 13px 10px;
+    /* padding: 13px 10px; */
     border-radius: 5px;
     cursor: pointer;
     flex: 1;
@@ -492,7 +551,7 @@ h2 {
     background-color: #333;
     color: white;
     border: none;
-    padding: 10px 20px;
+    /* padding: 10px 20px; */
     border-radius: 5px;
     cursor: pointer;
     flex: 1;
@@ -509,10 +568,10 @@ h2 {
 .nav-bar {
     display: flex;
     justify-content: space-around;
-    background-color: #fff;
+    /* background-color: #fff; */
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
 }
 
 .nav-item {
@@ -798,6 +857,7 @@ h2 {
 
 /* Container */
 #search-kariel-container {
+    margin-top: 60px;
     display: flex;
     gap: 6px;
 }
@@ -1653,7 +1713,7 @@ footer {
 
     .last-social-icons {
         display: flex;
-        margin: 10px 0;
+        margin-top: 10px;
         padding-left: 10px;
         gap: 15px;
     }
@@ -1734,6 +1794,32 @@ footer {
         color: white;
     }
 
+
+    .un-list {
+        padding: 0;
+    }
+    .un-list li {
+        list-style: none;
+        padding-bottom: 10px 3px;
+        position: relative;
+    }
+    .un-list li::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 2px;
+        background-color: orange;
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.3s ease-in-out;
+    }
+    .un-list li:hover::after {
+        transform: scaleX(1);
+        transform-origin: left;
+    }
+
     .un-list li {
         list-style: none;
     }
@@ -1805,6 +1891,16 @@ footer {
         /* Show 1 item at a time on mobile */
     }
 
+    .last-social-icons a {
+
+        width: 29px;
+        height: 29px;
+        color: #003366;
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    
+    
     .angle-right-btn {
         display: none;
     }
@@ -1813,6 +1909,25 @@ footer {
         display: grid;
         grid-template-columns: repeat(4,1fr);
         gap: 5px;
+    }
+.cashback-stores{
+    overflow: hidden;
+}
+    .cashback-stores .title{
+        display: none;
+    }
+
+    .more-button{
+        display: none;
+    }
+
+    .store-logos img {
+        display: none;
+    }
+
+    .store-logos img:nth-child(-n+5) {
+        display: inline; /* Show only the first 5 images */
+   
     }
 }
 
