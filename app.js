@@ -55,7 +55,7 @@ prevArrow.style.display = 'none';
 function updateVisibleCards() {
     cards.forEach((card, index) => {
         if (index >= currentIndex && index < currentIndex + cardsPerPage) {
-            card.style.display = 'block';
+            card.style.display = 'flex';
         } else {
             card.style.display = 'none';
         }
