@@ -1,4 +1,80 @@
 
+// const minHandle = document.getElementById('minHandle');
+// const maxHandle = document.getElementById('maxHandle');
+// const sliderBar = document.getElementById('sliderBar');
+// const minDisplayValue = document.getElementById('minDisplayValue');
+// const maxDisplayValue = document.getElementById('maxDisplayValue');
+
+// const minPrice = 1000;
+// const maxPrice = 45000;
+
+// function updateHandles() {
+//     const minHandlePosition = parseInt(minHandle.style.left) || 0;
+//     const maxHandlePosition = parseInt(maxHandle.style.left) || (sliderBar.offsetWidth - 16) + 'px';
+
+//     // Calculate values from handle positions
+//     const minPriceValue = Math.round((minHandlePosition / (sliderBar.offsetWidth - 16)) * (maxPrice - minPrice) + minPrice);
+//     const maxPriceValue = Math.round((maxHandlePosition / (sliderBar.offsetWidth - 16)) * (maxPrice - minPrice) + minPrice);
+
+//     // Update the displayed values
+//     minDisplayValue.innerText = minPriceValue.toLocaleString();
+//     maxDisplayValue.innerText = maxPriceValue.toLocaleString();
+
+//     // Calculate percentage positions for the background
+//     const minPercent = (minHandlePosition / (sliderBar.offsetWidth - 16)) * 100;
+//     const maxPercent = (maxHandlePosition / (sliderBar.offsetWidth - 16)) * 100;
+
+//     // Update the background gradient to visually represent the selected range
+//     sliderBar.style.background = `linear-gradient(to right, #efeff0 ${minPercent}%, #ffa500 ${minPercent}%, #ffa500 ${maxPercent}%, #efeff0 ${maxPercent}%)`;
+// }
+
+// minHandle.addEventListener('mousedown', (event) => {
+//     const moveHandle = (moveEvent) => {
+//         const maxHandlePosition = parseInt(maxHandle.style.left) || (sliderBar.offsetWidth - 16);
+//         const newPosition = Math.min(parseInt(maxHandlePosition) - 16, moveEvent.clientX - sliderBar.getBoundingClientRect().left);
+
+//         // Set the position of the minHandle
+//         minHandle.style.left = Math.max(0, newPosition) + 'px';
+//         updateHandles();
+//     };
+
+//     const stopMove = () => {
+//         document.removeEventListener('mousemove', moveHandle);
+//         document.removeEventListener('mouseup', stopMove);
+//     };
+
+//     document.addEventListener('mousemove', moveHandle);
+//     document.addEventListener('mouseup', stopMove);
+// });
+
+// maxHandle.addEventListener('mousedown', (event) => {
+//     const moveHandle = (moveEvent) => {
+//         const minHandlePosition = parseInt(minHandle.style.left) || 0;
+//         const newPosition = Math.max(minHandlePosition + 16, moveEvent.clientX - sliderBar.getBoundingClientRect().left);
+
+//         // Set the position of the maxHandle
+//         maxHandle.style.left = Math.min(newPosition, sliderBar.offsetWidth - 16) + 'px';
+//         updateHandles();
+//     };
+
+//     const stopMove = () => {
+//         document.removeEventListener('mousemove', moveHandle);
+//         document.removeEventListener('mouseup', stopMove);
+//     };
+
+//     document.addEventListener('mousemove', moveHandle);
+//     document.addEventListener('mouseup', stopMove);
+// });
+
+// // Initialize the handles' positions
+// minHandle.style.left = '0px';
+// maxHandle.style.left = (sliderBar.offsetWidth - 16) + 'px'; // Start max handle at the end of the bar
+// updateHandles(); // Initial value update
+
+
+
+
+
 const minHandle = document.getElementById('minHandle');
 const maxHandle = document.getElementById('maxHandle');
 const sliderBar = document.getElementById('sliderBar');
@@ -8,9 +84,10 @@ const maxDisplayValue = document.getElementById('maxDisplayValue');
 const minPrice = 1000;
 const maxPrice = 45000;
 
+// Function to update handle positions and display values
 function updateHandles() {
     const minHandlePosition = parseInt(minHandle.style.left) || 0;
-    const maxHandlePosition = parseInt(maxHandle.style.left) || (sliderBar.offsetWidth - 16) + 'px';
+    const maxHandlePosition = parseInt(maxHandle.style.left) || (sliderBar.offsetWidth - 16);
 
     // Calculate values from handle positions
     const minPriceValue = Math.round((minHandlePosition / (sliderBar.offsetWidth - 16)) * (maxPrice - minPrice) + minPrice);
@@ -28,53 +105,70 @@ function updateHandles() {
     sliderBar.style.background = `linear-gradient(to right, #efeff0 ${minPercent}%, #ffa500 ${minPercent}%, #ffa500 ${maxPercent}%, #efeff0 ${maxPercent}%)`;
 }
 
-minHandle.addEventListener('mousedown', (event) => {
-    const moveHandle = (moveEvent) => {
-        const maxHandlePosition = parseInt(maxHandle.style.left) || (sliderBar.offsetWidth - 16);
-        const newPosition = Math.min(parseInt(maxHandlePosition) - 16, moveEvent.clientX - sliderBar.getBoundingClientRect().left);
+// Function to handle both mouse and touch events
+function handleMove(event, activeHandle, otherHandle, sliderBar, isMinHandle, isTouch = false) {
+    event.preventDefault();
 
-        // Set the position of the minHandle
-        minHandle.style.left = Math.max(0, newPosition) + 'px';
+    const moveHandle = (moveEvent) => {
+        const otherHandlePosition = parseInt(otherHandle.style.left) || (sliderBar.offsetWidth - 16);
+        const newPosition = isMinHandle
+            ? Math.min(parseInt(otherHandlePosition) - 16, (isTouch ? moveEvent.touches[0].clientX : moveEvent.clientX) - sliderBar.getBoundingClientRect().left)
+            : Math.max(parseInt(otherHandlePosition) + 16, (isTouch ? moveEvent.touches[0].clientX : moveEvent.clientX) - sliderBar.getBoundingClientRect().left);
+
+        activeHandle.style.left = Math.max(0, Math.min(newPosition, sliderBar.offsetWidth - 16)) + 'px';
         updateHandles();
     };
 
     const stopMove = () => {
-        document.removeEventListener('mousemove', moveHandle);
-        document.removeEventListener('mouseup', stopMove);
+        document.removeEventListener(isTouch ? 'touchmove' : 'mousemove', moveHandle);
+        document.removeEventListener(isTouch ? 'touchend' : 'mouseup', stopMove);
     };
 
-    document.addEventListener('mousemove', moveHandle);
-    document.addEventListener('mouseup', stopMove);
+    document.addEventListener(isTouch ? 'touchmove' : 'mousemove', moveHandle);
+    document.addEventListener(isTouch ? 'touchend' : 'mouseup', stopMove);
+}
+
+// Mouse event listeners
+minHandle.addEventListener('mousedown', (event) => {
+    handleMove(event, minHandle, maxHandle, sliderBar, true);
+});
+maxHandle.addEventListener('mousedown', (event) => {
+    handleMove(event, maxHandle, minHandle, sliderBar, false);
 });
 
-maxHandle.addEventListener('mousedown', (event) => {
-    const moveHandle = (moveEvent) => {
-        const minHandlePosition = parseInt(minHandle.style.left) || 0;
-        const newPosition = Math.max(minHandlePosition + 16, moveEvent.clientX - sliderBar.getBoundingClientRect().left);
+// Touch event listeners for mobile
+minHandle.addEventListener('touchstart', (event) => {
+    handleMove(event, minHandle, maxHandle, sliderBar, true, true);
+});
+maxHandle.addEventListener('touchstart', (event) => {
+    handleMove(event, maxHandle, minHandle, sliderBar, false, true);
+});
 
-        // Set the position of the maxHandle
-        maxHandle.style.left = Math.min(newPosition, sliderBar.offsetWidth - 16) + 'px';
-        updateHandles();
-    };
+// Function to handle clicking on the slider bar
+sliderBar.addEventListener('click', (event) => {
+    const clickPosition = event.clientX - sliderBar.getBoundingClientRect().left;
+    const minHandlePosition = parseInt(minHandle.style.left) || 0;
+    const maxHandlePosition = parseInt(maxHandle.style.left) || (sliderBar.offsetWidth - 16);
 
-    const stopMove = () => {
-        document.removeEventListener('mousemove', moveHandle);
-        document.removeEventListener('mouseup', stopMove);
-    };
+    // Find which handle is closer to the click position
+    const distanceToMinHandle = Math.abs(clickPosition - minHandlePosition);
+    const distanceToMaxHandle = Math.abs(clickPosition - maxHandlePosition);
 
-    document.addEventListener('mousemove', moveHandle);
-    document.addEventListener('mouseup', stopMove);
+    if (distanceToMinHandle < distanceToMaxHandle) {
+        // Move the min handle
+        minHandle.style.left = Math.max(0, Math.min(clickPosition, maxHandlePosition - 16)) + 'px';
+    } else {
+        // Move the max handle
+        maxHandle.style.left = Math.min(Math.max(clickPosition, minHandlePosition + 16), sliderBar.offsetWidth - 16) + 'px';
+    }
+
+    updateHandles();
 });
 
 // Initialize the handles' positions
 minHandle.style.left = '0px';
 maxHandle.style.left = (sliderBar.offsetWidth - 16) + 'px'; // Start max handle at the end of the bar
 updateHandles(); // Initial value update
-
-
-
-
-
 
 
 
