@@ -150,7 +150,7 @@
     border: 1px solid gray;
     padding: 10px;
     width: 300px;
-height: 40px;
+    height: 40px;
     font-size: 16px;
     /* border-radius: 5px; */
 }
@@ -456,10 +456,10 @@ height: 40px;
 main {
     /* width: 500px; */
     border: 2px solid black;
-    display: flex;
+    /* display: flex;
     flex-direction: column;
-    justify-content: end;
-    align-items: center;
+    justify-content: end; */
+    /* align-items: center; */
     gap: 20px;
     padding: 20px;
     background-color: white;
@@ -467,6 +467,7 @@ main {
 }
 
 /* Base styles for all screen sizes */
+/* 
 .range-container {
     position: relative;
     width: 100%;
@@ -485,10 +486,10 @@ main {
     border-radius: 50%;
     cursor: pointer;
     top: -3px;
-    /* Offset to center the handle on the range bar */
+  
 }
 
-/* Position the handles initially */
+
 #minHandle {
     left: 0;
 }
@@ -503,6 +504,79 @@ main {
     background-color: rgba(255, 165, 0, 0.5);
     top: 0;
     border-radius: 10px;
+} */
+
+.range-selector-rs-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    margin-bottom: 40px;
+}
+
+
+.price-range-container {
+    font-family: Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding-top: 15px;
+    border-radius: 5px;
+    margin: 20px 0;
+
+}
+
+.price-range-title {
+    font-size: 20px;
+    color: #333;
+    margin-right: 20px;
+}
+
+.range-slider {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    position: relative;
+    flex-grow: 1;
+}
+
+.range-slider-bar {
+    height: 4px;
+    flex-grow: 1;
+    background-color: #ffa500;
+    margin-right: 8px;
+    position: relative;
+}
+
+.range-handle {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background-color: #ffa500;
+    border-radius: 50%;
+    top: -6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.range-handle-left {
+    left: 0;
+}
+
+.range-handle-right {
+    right: 0;
+}
+
+.range-inputs {
+    display: flex;
+    justify-content: space-between;
+}
+
+.range-inputs input[type='text'] {
+    border: 1px solid #ccc;
+    padding: 8px;
+    width: 100%;
+    max-width: 80px;
+    text-align: center;
 }
 
 /* card */
@@ -531,7 +605,7 @@ main {
     align-items: center;
     gap: 10px;
     font-family: Arial, sans-serif;
-    
+
 }
 
 .rs1,
@@ -850,6 +924,9 @@ h2 {
     z-index: 1;
 }
 
+.feature-range-container{
+    display: flex;
+}
 
 
 /* Trending products */
@@ -1747,10 +1824,6 @@ footer {
 
 
 
-
-
-
-
 @media(max-width:555px) {
     .news-header a {
         display: none;
@@ -2017,6 +2090,11 @@ footer {
         list-style: none;
     }
 
+    .feature-btn-container {
+display: flex;
+flex-wrap: wrap;
+    }
+
 
 }
 
@@ -2031,12 +2109,14 @@ footer {
 
     #compareChashback {
         flex-direction: column;
-        
+
     }
 
-    .compare-inner-card-container{
-        display: grid;
-        grid-template-columns: repeat(4,1fr);
+    .compare-inner-card-container {
+        display: flex;
+        flex-wrap: wrap;
+        /* grid-template-columns: repeat(4, 1fr); */
+       justify-content: center;
     }
 
     .compare-container,
@@ -2139,6 +2219,21 @@ footer {
         display: inline;
         /* Show only the first 5 images */
 
+    }
+
+    .range-slider{
+        width: 100%;
+    } 
+
+    .price-range-container {
+
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+    .feature-range-container{
+        flex-direction: column;
+        align-items: center;
     }
 }
 

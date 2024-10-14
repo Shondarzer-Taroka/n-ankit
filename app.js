@@ -1,92 +1,82 @@
 
-
-// range
-
-const rangeContainer = document.getElementById('rangeContainer');
 const minHandle = document.getElementById('minHandle');
 const maxHandle = document.getElementById('maxHandle');
-const rangeFill = document.getElementById('rangeFill');
-const containerWidth = rangeContainer.offsetWidth;
-const minValueText = document.getElementById('minValueText');
-const maxValueText = document.getElementById('maxValueText');
+const sliderBar = document.getElementById('sliderBar');
+const minDisplayValue = document.getElementById('minDisplayValue');
+const maxDisplayValue = document.getElementById('maxDisplayValue');
 
-const minValueRange = 1000;
-const maxValueRange = 15000;
+const minPrice = 1000;
+const maxPrice = 45000;
 
-// Update the range fill between the two handles
-const updateRangeFill = () => {
-    rangeFill.style.left = minHandle.offsetLeft + 'px';
-    rangeFill.style.width = (maxHandle.offsetLeft - minHandle.offsetLeft) + 'px';
+function updateHandles() {
+    const minHandlePosition = parseInt(minHandle.style.left) || 0;
+    const maxHandlePosition = parseInt(maxHandle.style.left) || (sliderBar.offsetWidth - 16) + 'px';
 
-    const minValue = Math.floor(minHandle.offsetLeft / containerWidth * (maxValueRange - minValueRange) + minValueRange);
-    const maxValue = Math.floor(maxHandle.offsetLeft / containerWidth * (maxValueRange - minValueRange) + minValueRange);
+    // Calculate values from handle positions
+    const minPriceValue = Math.round((minHandlePosition / (sliderBar.offsetWidth - 16)) * (maxPrice - minPrice) + minPrice);
+    const maxPriceValue = Math.round((maxHandlePosition / (sliderBar.offsetWidth - 16)) * (maxPrice - minPrice) + minPrice);
 
-    minValueText.textContent = minValue.toLocaleString();
-    maxValueText.textContent = maxValue.toLocaleString();
-};
+    // Update the displayed values
+    minDisplayValue.innerText = minPriceValue.toLocaleString();
+    maxDisplayValue.innerText = maxPriceValue.toLocaleString();
 
-// Dragging the min handle
-const dragMinHandle = (e) => {
-    let newLeft = e.clientX - rangeContainer.offsetLeft;
+    // Calculate percentage positions for the background
+    const minPercent = (minHandlePosition / (sliderBar.offsetWidth - 16)) * 100;
+    const maxPercent = (maxHandlePosition / (sliderBar.offsetWidth - 16)) * 100;
 
-    if (newLeft < 0) newLeft = 0;
-    if (newLeft > maxHandle.offsetLeft - minHandle.offsetWidth) {
-        newLeft = maxHandle.offsetLeft - minHandle.offsetWidth;
-    }
+    // Update the background gradient to visually represent the selected range
+    sliderBar.style.background = `linear-gradient(to right, #efeff0 ${minPercent}%, #ffa500 ${minPercent}%, #ffa500 ${maxPercent}%, #efeff0 ${maxPercent}%)`;
+}
 
-    minHandle.style.left = newLeft + 'px';
-    updateRangeFill();
-};
+minHandle.addEventListener('mousedown', (event) => {
+    const moveHandle = (moveEvent) => {
+        const maxHandlePosition = parseInt(maxHandle.style.left) || (sliderBar.offsetWidth - 16);
+        const newPosition = Math.min(parseInt(maxHandlePosition) - 16, moveEvent.clientX - sliderBar.getBoundingClientRect().left);
 
-// Dragging the max handle
-const dragMaxHandle = (e) => {
-    let newLeft = e.clientX - rangeContainer.offsetLeft;
+        // Set the position of the minHandle
+        minHandle.style.left = Math.max(0, newPosition) + 'px';
+        updateHandles();
+    };
 
-    if (newLeft > containerWidth - maxHandle.offsetWidth) {
-        newLeft = containerWidth - maxHandle.offsetWidth;
-    }
-    if (newLeft < minHandle.offsetLeft + minHandle.offsetWidth) {
-        newLeft = minHandle.offsetLeft + minHandle.offsetWidth;
-    }
+    const stopMove = () => {
+        document.removeEventListener('mousemove', moveHandle);
+        document.removeEventListener('mouseup', stopMove);
+    };
 
-    maxHandle.style.left = newLeft + 'px';
-    updateRangeFill();
-};
-
-// Mouse down events to begin dragging
-minHandle.addEventListener('mousedown', () => {
-    document.addEventListener('mousemove', dragMinHandle);
+    document.addEventListener('mousemove', moveHandle);
+    document.addEventListener('mouseup', stopMove);
 });
 
-maxHandle.addEventListener('mousedown', () => {
-    document.addEventListener('mousemove', dragMaxHandle);
+maxHandle.addEventListener('mousedown', (event) => {
+    const moveHandle = (moveEvent) => {
+        const minHandlePosition = parseInt(minHandle.style.left) || 0;
+        const newPosition = Math.max(minHandlePosition + 16, moveEvent.clientX - sliderBar.getBoundingClientRect().left);
+
+        // Set the position of the maxHandle
+        maxHandle.style.left = Math.min(newPosition, sliderBar.offsetWidth - 16) + 'px';
+        updateHandles();
+    };
+
+    const stopMove = () => {
+        document.removeEventListener('mousemove', moveHandle);
+        document.removeEventListener('mouseup', stopMove);
+    };
+
+    document.addEventListener('mousemove', moveHandle);
+    document.addEventListener('mouseup', stopMove);
 });
 
-// Mouse up event to stop dragging
-document.addEventListener('mouseup', () => {
-    document.removeEventListener('mousemove', dragMinHandle);
-    document.removeEventListener('mousemove', dragMaxHandle);
-});
+// Initialize the handles' positions
+minHandle.style.left = '0px';
+maxHandle.style.left = (sliderBar.offsetWidth - 16) + 'px'; // Start max handle at the end of the bar
+updateHandles(); // Initial value update
 
-// Handle clicks on the range bar
-const handleRangeClick = (e) => {
-    const clickPosition = e.clientX - rangeContainer.offsetLeft;
-    const minDistance = Math.abs(clickPosition - minHandle.offsetLeft);
-    const maxDistance = Math.abs(clickPosition - maxHandle.offsetLeft);
 
-    if (minDistance < maxDistance) {
-        minHandle.style.left = clickPosition + 'px';
-    } else {
-        maxHandle.style.left = clickPosition + 'px';
-    }
 
-    updateRangeFill();
-};
 
-rangeContainer.addEventListener('click', handleRangeClick);
 
-// Initial range fill setup
-updateRangeFill();
+
+
 
 
 
